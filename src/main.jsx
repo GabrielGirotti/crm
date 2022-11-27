@@ -1,27 +1,38 @@
 import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPAge from "./components/ErrorPAge";
 import Layout from "./components/Layout";
 import "./index.css";
+import EditarCliente, { loader as editarLoader } from "./pages/EditarCliente";
 import Index, { loader as clientesLoader } from "./pages/Index";
-import NuevoCliente, {action, action as nuevoClienteAction} from "./pages/NuevoCliente";
+import NuevoCliente, {
+  action as nuevoClienteAction,
+} from "./pages/NuevoCliente";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
         index: true,
-        element: <Index/>,
-        loader: clientesLoader
+        element: <Index />,
+        loader: clientesLoader,
+        errorElement: <ErrorPAge />,
       },
       {
         path: "/clientes/nuevo",
-        element: <NuevoCliente/>,
-        action: nuevoClienteAction
-      }
-    ]
+        element: <NuevoCliente />,
+        action: nuevoClienteAction,
+      },
+      {
+        path: "/clientes/:clienteId/editar",
+        element: <EditarCliente />,
+        loader: editarLoader,
+        errorElement: <ErrorPAge />,
+      },
+    ],
   },
 ]);
 

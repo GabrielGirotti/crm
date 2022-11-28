@@ -58,7 +58,7 @@ const NuevoCliente = () => {
           <input
             type="submit"
             value="Registrar Cliente"
-            className="mt-5 w-full bg-blue-800 p-3 uppercase font-bold text-lg text-white"
+            className="mt-5 w-full bg-blue-800 p-3 uppercase font-bold text-lg text-white cursor-pointer"
           />
 
           {errores?.length &&
